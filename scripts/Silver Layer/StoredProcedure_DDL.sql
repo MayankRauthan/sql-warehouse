@@ -1,3 +1,15 @@
+/*
+ *  ===============================================================================
+	 Stored_Procedure: StoredProcedure_DDL is an stored procedure in silver layer
+	===============================================================================
+
+ * 
+ * It is DDL + DML script where tables are created as well as complex transformation, 
+ * cleaning , buisness logic are applied 
+ * It created the second layer of medallion architecture 
+ */
+
+
 CREATE OR REPLACE PROCEDURE silver.inserting_values()
 LANGUAGE plpgsql
 AS $$
@@ -34,7 +46,7 @@ BEGIN
     CREATE TABLE IF NOT EXISTS silver.crm_prod_info AS
     SELECT
       prod_id,
-      prod_key,
+      substring(prod_key,7,length(prod_key)) as prod_key,
       replace(substring(trim(prod_key),1,5), ''-'',''_'') AS cat_id,
       prod_name,
       CASE WHEN prod_cost IS NULL THEN 0 ELSE prod_cost END,

@@ -1,3 +1,10 @@
+/*
+ *  ===============================================================================
+	 Bronze DDL: DDL is a data definition and data loading script for bronze layer
+	===============================================================================
+	This script defines the tables and the data types of each column for bronze layer.
+	It also loades data from the CSV file into the data base
+ */
 
 create table bronze.crm_cust_info
 (cust_id int ,
